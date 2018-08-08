@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "superagent": "^3.8.3",
+    "utility": "^1.14.0"
+  },
+  "devDependencies": {},
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
