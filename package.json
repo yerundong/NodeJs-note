@@ -11,7 +11,7 @@
   "devDependencies": {},
   "name": "nodejs",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./app.js",
   "author": "",
   "license": "ISC",
   "description": ""

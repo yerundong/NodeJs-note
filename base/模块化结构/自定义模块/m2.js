@@ -4,7 +4,7 @@ class Hello{
         this.y = 2;
     }
 }
-Hello.prototype.saySomething = function (w) {
-    console.log(w);
+Hello.prototype.sayHello = function () {
+    console.log('hello!!');
 }
 module.exports = Hello;

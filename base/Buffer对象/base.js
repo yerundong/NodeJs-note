@@ -1,7 +1,11 @@
-// JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
+// [概述]
+// Buffer对象是Node处理二进制数据的一个接口。
+// 它是Node原生提供的全局对象，可以直接使用，不需要require('buffer')。
+// JavaScript语言在引入二进制数组（typedArray...）之前，是没有二进制数据类型，只有字符串数据类型。
 // 但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
-// 在v6.0之前创建Buffer对象直接使用new Buffer()构造函数来创建对象实例，
-// 但是Buffer对内存的权限操作相比很大，可以直接捕获一些敏感信息，所以在v6.0以后，官方文档里面建议使用 Buffer.from() 接口去创建Buffer对象。
+// 在v6.0之前创建Buffer对象直接使用new Buffer()构造函数来创建对象实例，但是Buffer对内存的权限操作相比很大，可以直接捕获一些敏感信息，
+// 为了使Buffer实例的创建更可靠、更不容易出错，各种new Buffer()构造函数已被 废弃，并由 Buffer.from()、Buffer.alloc()、和 Buffer.allocUnsafe() 方法替代。
+// Buffer的大小在被创建时确定，且无法调整。
 
 // Buffer提供了以下API来创建Buffer类：
     // Buffer.alloc(size[, fill[, encoding]])： 返回一个指定大小的 Buffer 实例，如果没有设置 fill，则默认填满 0
@@ -12,27 +16,19 @@
     // Buffer.from(buffer)： 复制传入的 Buffer 实例的数据，并返回一个新的 Buffer 实例
     // Buffer.from(string[, encoding])： 返回一个被 string 的值初始化的新的 Buffer 实例
 
-const buf = Buffer.from('yerundong', 'ascii');
-// console.log(buf);
-// console.log(typeof buf);// object
-// console.log(buf[1]);// 121
-// console.log(buf.length);// 9
-// console.log(buf.toString('ascii'));// yerundong
-
-// 创建一个长度为 10、且用 0 填充的 Buffer。
-const buf1 = Buffer.alloc(10);
-
-// 创建一个长度为 10、且用 0x1 填充的 Buffer。
-const buf2 = Buffer.alloc(10, 1);
-// console.log(buf2);
-
-
 // 创建一个长度为 10、且未初始化的 Buffer。
 // 这个方法比调用 Buffer.alloc() 更快，
 // 但返回的 Buffer 实例可能包含旧数据，
 // 因此需要使用 fill() 或 write() 重写。
 const buf3 = Buffer.allocUnsafe(10);
 // console.log(buf3);
+
+const buf = Buffer.from('yerundong', 'ascii');
+// console.log(buf);
+// console.log(typeof buf);// object
+// console.log(buf[1]);// 121
+// console.log(buf.length);// 9
+// console.log(buf.toString('ascii'));// yerundong
 
 // 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer。
 const buf4 = Buffer.from([1, 2, 3]);

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #inForm, #outForm{
+        width: 500px;
+        height: 50px;
+    }
+</style>
+<body>
+    <input type="text" id="inForm">
+    <button id="conf">确认=></button>
+    <input type="text" id="outForm">
+    <script>
+        const $ = function (x) {
+            return document.querySelector(x);
+        };
+        const makePath = function (path) {
+            console.log(path);
+        }
+        
+        $('#conf').addEventListener('click', function () {
+            const inVal = $('#inForm').value;
+            const reg = /(base).*/g;
+            const matchVal = inVal.match(reg) || [];
+            if(matchVal[0]){
+                const repVal = matchVal[0].replace(/\\/g,'/');
+                const finalVal = 'node ' + repVal
+                $('#outForm').value = finalVal;
+            }
+        }, false);
+    </script>
+</body>
+</html>
