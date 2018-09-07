@@ -10,4 +10,5 @@ console.log(buf1);
 
 // 创建一个长度为 10、且用 0x1 填充的 Buffer。
 const buf2 = Buffer.alloc(10, 1);
+const buf2 = Buffer.alloc(10, 0x1);
 console.log(buf2);
