@@ -10,32 +10,18 @@ const eventEmitter = new EventEmitter();
 // 默认情况下， EventEmitters 如果你添加的监听器超过 10 个就会输出警告信息。 setMaxListeners 函数用于提高监听器的默认限制的数量。
 // eventEmitter.setMaxListeners(2);
 
-// 事件
-// newListener
-// 该事件在添加新监听器时被触发。
-eventEmitter.on("newListener", (EventName, callback) => {
-	console.log('newListener=====>' + EventName);
-});
-// removeListener
-// 从指定监听器数组中删除一个监听器。需要注意的是，此操作将会改变处于被删监听器之后的那些监听器的索引。
-eventEmitter.on("removeListener", (EventName, callback) => {
-	console.log('removeListener=====>' + EventName);
-});
-
-// 监听器
+// 添加监听器
 // [addListener]
 // 为指定事件注册一个监听器
 eventEmitter.addListener('someEvent1', (...args) => {
     console.log(args);
 })
-
 // [on]
 // 为指定事件注册一个监听器
 // addListener和on没有区别，EventEmitter.prototype.on = EventEmitter.prototype.addListener;    
 eventEmitter.on('someEvent2', (...args) => {
     console.log(args);
 })
-
 // [once]
 // 为指定事件注册一个单次监听器
 eventEmitter.once('someEvent3', (...args) => {
@@ -94,11 +80,11 @@ eventEmitter.emit('someEvent5', 'someEvent5');
 // eventEmitter.emit('someEvent10', 'someEvent10');
 // eventEmitter.emit('someEvent11', 'someEvent11');
 
-// [listeners]
-// 返回指定事件的监听器数量。
+// [emitter.listeners(eventName)]
+// 返回名为 eventName 的事件的监听器数组的副本。
 console.log(eventEmitter.listeners('someEvent2'));
 
 // EventEmitter类的方法
-// [listenerCount]
+// [emitter.listenerCount(eventName)]
 // 返回指定事件的监听器数量。
-console.log(EventEmitter.listenerCount(eventEmitter, 'someEvent1'));
+console.log(eventEmitter.listenerCount('someEvent2'));
