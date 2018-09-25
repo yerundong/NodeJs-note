@@ -28,11 +28,6 @@ const readStream = fs.createReadStream('./base/流/text.txt');
 // 设置编码为hex
 readStream.setEncoding('hex');
 
-console.log(readStream);
-
-
-
-
 
 
 // const Readable = require('stream').Readable;
