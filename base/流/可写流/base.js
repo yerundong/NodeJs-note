@@ -44,8 +44,6 @@ writeStream.on('error', function(err){
 
 // [readable.pipe(writable)
 
-
-]
 // 可读流拼接到可写流
 readStream.pipe(writeStream);
 // readStream.on('data', (chunk) => {

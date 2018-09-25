@@ -3,7 +3,6 @@
 
 const fs = require('fs');
 
-
 fs.watchFile('./base/fs模块/test.doc', (curr, prev) => {
     console.log(curr);
     // console.log(prev);
