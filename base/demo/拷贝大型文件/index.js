@@ -4,13 +4,16 @@ function copyFile(sourcefileName, createFileName, isCover = true) {
     fs.access(sourcefileName, err => {
         if (!err) {
             fs.access(createFileName, err => {
-                if(err || isCover){
+                if (err || isCover) {
                     const sfileStrem = fs.createReadStream(sourcefileName);
                     const cfileStrem = fs.createWriteStream(createFileName);
                     sfileStrem.on('data', chunck => {
                         cfileStrem.write(chunck);
                     });
-                }else{
+                    cfileStrem.on('end', () => {
+                        cfileStrem.end();
+                    });
+                } else {
                     console.log('新文件名已存在');
                 }
             })
